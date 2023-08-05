@@ -28,25 +28,11 @@ int main(int argc, char* argv[]) {
     char base_name_copy[256];
     const char* base_name = extract_base_name(filename, base_name_copy, sizeof(base_name_copy));
 
-    char grayscale_filename[256];
-    construct_grayscale_filename(base_name, grayscale_filename, sizeof(grayscale_filename));
-
-    if (lodepng_encode_file(grayscale_filename, host_grayscale_image, width, height, LCT_GREY, 8)) {
-        fprintf(stderr, "Error writing grayscale image\n");
-    } else {
-        printf("Created %s\n", grayscale_filename);
-    }
+    encode_and_save("grayscale", base_name, host_grayscale_image, width, height);
 
     applyPrewitt(host_grayscale_image, host_output_image, width, height);
 
-    char prewitt_filename[256];
-    construct_prewitt_filename(base_name, prewitt_filename, sizeof(prewitt_filename));
-
-    if (lodepng_encode_file(prewitt_filename, host_output_image, width, height, LCT_GREY, 8)) {
-        fprintf(stderr, "Error writing output image\n");
-    } else {
-        printf("Created %s\n", prewitt_filename);
-    }
+    encode_and_save("prewitt", base_name, host_output_image, width, height);
 
     free(host_input_image);
     free(host_output_image);
