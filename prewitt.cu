@@ -40,7 +40,7 @@ __global__ void apply_prewitt(unsigned char* grayscale_image, unsigned char* out
 
 
 
-extern "C" void applyPrewitt(unsigned char* host_grayscale_image, unsigned char* host_output_image, unsigned int width, unsigned int height) {
+extern "C" float applyPrewitt(unsigned char* host_grayscale_image, unsigned char* host_output_image, unsigned int width, unsigned int height) {
     const int imageSize = width * height * sizeof(unsigned char);
     const dim3 blockSize(16, 16); // Change this as per your needs
     const dim3 gridSize((width + blockSize.x - 1) / blockSize.x, (height + blockSize.y - 1) / blockSize.y);
@@ -74,7 +74,8 @@ extern "C" void applyPrewitt(unsigned char* host_grayscale_image, unsigned char*
 
     // Call and time the kernel execution using the timing function
     printf("Launching Prewitt Operator Kernel\n");
-    timeKernelExecution(kernelFunction);
+    float elapsedTime = timeKernelExecution(kernelFunction);
+
 
     err = cudaGetLastError();
     if (err != cudaSuccess) {
@@ -90,6 +91,8 @@ extern "C" void applyPrewitt(unsigned char* host_grayscale_image, unsigned char*
 
     cudaFree(device_grayscale_image);
     cudaFree(device_output_image);
+
+    return elapsedTime;
 }
 
 

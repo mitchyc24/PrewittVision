@@ -1,7 +1,8 @@
 #include "timing.h"
 #include <stdio.h>
+#include <functional>
 
-void timeKernelExecution(const std::function<void()>& kernelFunction) {
+float timeKernelExecution(const std::function<void()>& kernelFunction) {
     cudaEvent_t start, stop;
     cudaEventCreate(&start);
     cudaEventCreate(&stop);
@@ -18,4 +19,6 @@ void timeKernelExecution(const std::function<void()>& kernelFunction) {
 
     cudaEventDestroy(start);
     cudaEventDestroy(stop);
+
+    return elapsedMilliseconds; // Return the elapsed time in milliseconds
 }

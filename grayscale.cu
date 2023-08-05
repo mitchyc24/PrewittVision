@@ -18,7 +18,7 @@ __global__ void convert_to_grayscale(unsigned char* input_image, unsigned char* 
     }
 }
 
-extern "C" void convertToGrayscale(unsigned char* host_input_image, unsigned char* host_grayscale_image, unsigned int width, unsigned int height) {
+extern "C" float convertToGrayscale(unsigned char* host_input_image, unsigned char* host_grayscale_image, unsigned int width, unsigned int height) {
     const int imageSize = width * height * sizeof(unsigned char);
     const int blockSize = 16;
     dim3 blockDims(blockSize, blockSize, 1);
@@ -50,7 +50,8 @@ extern "C" void convertToGrayscale(unsigned char* host_input_image, unsigned cha
 
     // Call and time the kernel execution using the timing function
     printf("Launching Grayscale Kernel\n");
-    timeKernelExecution(kernelFunction);
+    float elapsedTime = timeKernelExecution(kernelFunction);
+
 
     err = cudaGetLastError();
     if (err != cudaSuccess) {
@@ -66,4 +67,6 @@ extern "C" void convertToGrayscale(unsigned char* host_input_image, unsigned cha
 
     cudaFree(device_input_image);
     cudaFree(device_grayscale_image);
+
+    return elapsedTime;
 }

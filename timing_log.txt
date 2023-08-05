@@ -1,0 +1,6 @@
+-----------------------------------
+Grayscale kernel time (ms): 1.222208
+Prewitt kernel time (ms): 0.224096
+-----------------------------------
+Grayscale kernel time (ms): 1.007904
+Prewitt kernel time (ms): 0.226016
