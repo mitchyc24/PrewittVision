@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.pyde": "python",
+        "*.txt": "markdown",
+        "kernels.h": "c"
+    }
+}
