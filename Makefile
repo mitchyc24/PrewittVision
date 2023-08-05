@@ -1,8 +1,9 @@
 CC=gcc
-CXX=g++
 NVCC=nvcc
+
 CFLAGS=-I.
-CUDAFLAGS=-I. -L/usr/local/cuda/lib64 -lcudart -ccbin $(CXX) 
+NVFLAGS=-I. -L/usr/local/cuda/lib64 -lcudart -ccbin g++
+
 DEPS = kernels.h lodepng.h
 OBJ = main.o grayscale.o prewitt.o lodepng.o
 
@@ -10,12 +11,12 @@ OBJ = main.o grayscale.o prewitt.o lodepng.o
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 %.o: %.cu $(DEPS)
-	$(NVCC) -c -o $@ $< $(CUDAFLAGS)
+	$(NVCC) -c -o $@ $< $(NVFLAGS)
 
 PrewittVision: $(OBJ)
-	$(NVCC) -o $@ $^ $(CFLAGS) $(CUDAFLAGS)
+	$(NVCC) -o $@ $^ $(NVFLAGS)
 
 .PHONY: clean
 
 clean:
-	rm -f *.o PrewittVision
+	rm -f $(OBJ) PrewittVision
