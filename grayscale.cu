@@ -7,7 +7,7 @@ __global__ void convert_to_grayscale(unsigned char* input_image, unsigned char* 
 }
 
 
-void convertToGrayscale(unsigned char* host_input_image, unsigned char* host_grayscale_image) {
+extern "C" void convertToGrayscale(unsigned char* host_input_image, unsigned char* host_grayscale_image) {
     const int imageSize = 1024 * 1024;
     const int blockSize = 16;
     const int gridSize = imageSize / blockSize;

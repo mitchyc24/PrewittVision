@@ -8,7 +8,7 @@ __global__ void apply_prewitt(unsigned char* grayscale_image, unsigned char* out
 
 
 
-void applyPrewitt(unsigned char* host_grayscale_image, unsigned char* host_output_image) {
+extern "C" void applyPrewitt(unsigned char* host_grayscale_image, unsigned char* host_output_image) {
     const int imageSize = 1024 * 1024;
     const int blockSize = 16;
     const int gridSize = imageSize / blockSize;
