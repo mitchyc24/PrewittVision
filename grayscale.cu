@@ -1,4 +1,5 @@
 #include "kernels.h"
+#include "timing.h"
 #include <cuda_runtime.h>
 #include <stdio.h>
 
@@ -43,7 +44,13 @@ extern "C" void convertToGrayscale(unsigned char* host_input_image, unsigned cha
         fprintf(stderr, "Error copying to device_input_image: %s\n", cudaGetErrorString(err));
     }
 
-    convert_to_grayscale<<<gridDims, blockDims>>>(device_input_image, device_grayscale_image, width, height); // Assuming kernel takes width and height
+    auto kernelFunction = [&]() {
+        convert_to_grayscale<<<gridDims, blockDims>>>(device_input_image, device_grayscale_image, width, height);
+    };
+
+    // Call and time the kernel execution using the timing function
+    printf("Launching Grayscale Kernel\n");
+    timeKernelExecution(kernelFunction);
 
     err = cudaGetLastError();
     if (err != cudaSuccess) {

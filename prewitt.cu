@@ -1,4 +1,5 @@
 #include "kernels.h"
+#include "timing.h"
 #include <cuda_runtime.h>
 #include <stdio.h>
 
@@ -6,7 +7,7 @@
 
 __global__ void apply_prewitt(unsigned char* grayscale_image, unsigned char* output_image, unsigned int width, unsigned int height) {
     // Prewitt operator https://en.wikipedia.org/wiki/Prewitt_operator
-    
+
     int x = blockIdx.x * blockDim.x + threadIdx.x;
     int y = blockIdx.y * blockDim.y + threadIdx.y;
 
@@ -65,7 +66,21 @@ extern "C" void applyPrewitt(unsigned char* host_grayscale_image, unsigned char*
         fprintf(stderr, "Error copying to device_grayscale_image: %s\n", cudaGetErrorString(err));
     }
 
-    apply_prewitt<<<gridSize, blockSize>>>(device_grayscale_image, device_output_image, width, height);
+
+
+    auto kernelFunction = [&](){
+        apply_prewitt<<<gridSize, blockSize>>>(device_grayscale_image, device_output_image, width, height);
+    };
+
+    // Call and time the kernel execution using the timing function
+    printf("Launching Prewitt Operator Kernel\n");
+    timeKernelExecution(kernelFunction);
+
+    err = cudaGetLastError();
+    if (err != cudaSuccess) {
+        fprintf(stderr, "Error launching kernel: %s\n", cudaGetErrorString(err));
+    }
+
     cudaDeviceSynchronize();
 
     err = cudaMemcpy(host_output_image, device_output_image, imageSize, cudaMemcpyDeviceToHost);
