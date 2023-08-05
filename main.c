@@ -3,16 +3,27 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// TODO: Parse command line arguments, read input image file using lodepng, etc.
+int main(int argc, char *argv[]) {
+    if (argc != 2) {
+        fprintf(stderr, "Correct usage: %s <input.png>\n", argv[0]);
+        return 1;
+    }
 
-int main() {
+    const char* filename = argv[1];
+    unsigned char* host_input_image;
+    unsigned int width, height;
 
-    unsigned char* host_input_image; // TODO: Initialize this with the image data
-    unsigned char* host_output_image = (unsigned char*)malloc(1024 * 1024);
-    unsigned char* host_grayscale_image = (unsigned char*)malloc(1024 * 1024);
+    // Read the input image file using lodepng
+    if (lodepng_decode32_file(&host_input_image, &width, &height, filename)) {
+        fprintf(stderr, "Error reading image file %s\n", filename);
+        return 1;
+    }
 
-    convertToGrayscale(host_input_image, host_grayscale_image);
-    applyPrewitt(host_grayscale_image, host_output_image);
+    unsigned char* host_output_image = (unsigned char*)malloc(width * height);
+    unsigned char* host_grayscale_image = (unsigned char*)malloc(width * height);
+
+    convertToGrayscale(host_input_image, host_grayscale_image, width, height);
+    applyPrewitt(host_grayscale_image, host_output_image, width, height);
 
     // TODO: Write host_output_image to a .png file using lodepng
 
