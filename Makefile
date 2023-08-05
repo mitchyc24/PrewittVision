@@ -4,8 +4,8 @@ NVCC=nvcc
 CFLAGS=-I.
 NVFLAGS=-I. -L/usr/local/cuda/lib64 -lcudart -ccbin g++
 
-DEPS = kernels.h lodepng.h
-OBJ = main.o grayscale.o prewitt.o lodepng.o
+DEPS = kernels.h lodepng.h utils.h
+OBJ = main.o grayscale.o prewitt.o lodepng.o utils.o
 
 %.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
