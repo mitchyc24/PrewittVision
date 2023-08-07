@@ -1,6 +1,24 @@
 -----------------------------------
-Grayscale kernel time (ms): 1.222208
-Prewitt kernel time (ms): 0.224096
+Version: 0.100000.1
+Grayscale kernel time (ms): 1.325728
+Prewitt kernel time (ms): 0.137280
 -----------------------------------
-Grayscale kernel time (ms): 1.007904
-Prewitt kernel time (ms): 0.226016
+Version: 0.1
+Grayscale kernel time (ms): 1.554656
+Prewitt kernel time (ms): 0.136576
+Grayscale Kernel Time: 1.404896
+Prewitt Kernel Time: 0.101088
+Grayscale Kernel Time: 1.111520
+Prewitt Kernel Time: 0.125536
+Version: 0.1
+Grayscale Kernel Time (ms): 1.620032
+Prewitt Kernel Time (ms): 0.154784
+----------------------------
+Version: 0.1
+Grayscale Kernel Time (ms): 1.294784
+Prewitt Kernel Time (ms): 0.214016
+----------------------------
+Version: 0.1
+Grayscale Kernel Time (ms): 1.569152
+Prewitt Kernel Time (ms): 0.157504
+----------------------------
