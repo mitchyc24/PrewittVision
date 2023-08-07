@@ -36,6 +36,9 @@ int main(int argc, char* argv[]) {
 
     LogFile logFile = open_log_file(); // Open the log file
 
+    LogData* head = NULL;
+    LogData* tail = NULL;
+
     #pragma omp parallel for
     for (int i = 0; i < num_images; i++) {
         int thread_id = omp_get_thread_num();
@@ -45,8 +48,7 @@ int main(int argc, char* argv[]) {
 
         unsigned char* host_input_image;
         unsigned int width, height;
-        LogData log_data;
-
+        
         if (lodepng_decode32_file(&host_input_image, &width, &height, filename)) {
             fprintf(stderr, "Error reading image file %s\n", filename);
             free(host_input_image);
@@ -56,23 +58,36 @@ int main(int argc, char* argv[]) {
         unsigned char* host_output_image = (unsigned char*)malloc(width * height * sizeof(unsigned char));
         unsigned char* host_grayscale_image = (unsigned char*)malloc(width * height * sizeof(unsigned char));
 
-        log_data.kernel_time_grayscale = convertToGrayscale(host_input_image, host_grayscale_image, width, height);
+        LogData* log_data = (LogData*)malloc(sizeof(LogData));
+        strncpy(log_data->img_name, filename, sizeof(log_data->img_name) - 1);
+        log_data->img_name[sizeof(log_data->img_name) - 1] = '\0'; // Null-terminate the string
+
+        log_data->kernel_time_grayscale = convertToGrayscale(host_input_image, host_grayscale_image, width, height);
+        log_data->kernel_time_prewitt = applyPrewitt(host_grayscale_image, host_output_image, width, height);
+        log_data->next = NULL;
+
+        if (head == NULL) {
+            head = log_data;
+            tail = log_data;
+        } else {
+            tail->next = log_data;
+            tail = log_data;
+        }
 
         char base_name_copy[256];
         const char* base_name = extract_base_name(filename, base_name_copy, sizeof(base_name_copy));
 
         encode_and_save("grayscale", base_name, host_grayscale_image, width, height);
-
-        log_data.kernel_time_prewitt = applyPrewitt(host_grayscale_image, host_output_image, width, height);
-
         encode_and_save("prewitt", base_name, host_output_image, width, height);
-
-        write_log(logFile, &log_data); // Write log data using the LogFile object
 
         free(host_input_image);
         free(host_output_image);
         free(host_grayscale_image);
     }
+
+    write_log(logFile, head); 
+
+    free_log(head);
 
     fclose(logFile.file); // Close the log file
 

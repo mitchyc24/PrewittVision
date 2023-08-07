@@ -1,96 +1,23 @@
------------------------------------
-Version: 0.100000.1
-Grayscale kernel time (ms): 1.325728
-Prewitt kernel time (ms): 0.137280
------------------------------------
 Version: 0.1
-Grayscale kernel time (ms): 1.554656
-Prewitt kernel time (ms): 0.136576
-Grayscale Kernel Time: 1.404896
-Prewitt Kernel Time: 0.101088
-Grayscale Kernel Time: 1.111520
-Prewitt Kernel Time: 0.125536
-Version: 0.1
-Grayscale Kernel Time (ms): 1.620032
-Prewitt Kernel Time (ms): 0.154784
-----------------------------
-Version: 0.1
-Grayscale Kernel Time (ms): 1.294784
-Prewitt Kernel Time (ms): 0.214016
-----------------------------
-Version: 0.1
-Grayscale Kernel Time (ms): 1.569152
-Prewitt Kernel Time (ms): 0.157504
-----------------------------
-Version: 0.1
-Grayscale Kernel Time (ms): 1.196064
-Prewitt Kernel Time (ms): 0.117824
-----------------------------
-Version: 0.1
-Grayscale Kernel Time (ms): 1.448992
-Prewitt Kernel Time (ms): 0.145024
-----------------------------
-Version: 0.1
-Grayscale Kernel Time (ms): 0.097152
-Prewitt Kernel Time (ms): 0.113600
-----------------------------
-Version: 0.1
-Grayscale Kernel Time (ms): 0.134432
-Prewitt Kernel Time (ms): 0.139104
-----------------------------
-Version: 0.1
-Grayscale Kernel Time (ms): 0.144512
-Prewitt Kernel Time (ms): 0.129472
-----------------------------
-Version: 0.1
-Grayscale Kernel Time (ms): 0.097248
-Prewitt Kernel Time (ms): 0.127200
-----------------------------
-Version: 0.1
-Grayscale Kernel Time (ms): 1.362432
-Prewitt Kernel Time (ms): 0.122496
-----------------------------
-Version: 0.1
-Grayscale Kernel Time (ms): 0.142048
-Prewitt Kernel Time (ms): 0.154016
-----------------------------
-Version: 0.1
-Grayscale Kernel Time (ms): 0.090720
-Prewitt Kernel Time (ms): 0.158912
-----------------------------
-Version: 0.1
-Grayscale Kernel Time (ms): 0.116224
-Prewitt Kernel Time (ms): 0.098016
-----------------------------
-Version: 0.1
-Grayscale Kernel Time (ms): 0.111296
-Prewitt Kernel Time (ms): 0.100544
-----------------------------
-Version: 0.1
-Grayscale Kernel Time (ms): 0.150432
-Prewitt Kernel Time (ms): 0.113280
-----------------------------
-Version: 0.1
-Grayscale Kernel Time (ms): 0.413248
-Prewitt Kernel Time (ms): 0.163008
-----------------------------
-Version: 0.1
-Grayscale Kernel Time (ms): 2.804320
-Prewitt Kernel Time (ms): 0.064672
-----------------------------
-Version: 0.1
-Grayscale Kernel Time (ms): 11.550784
-Prewitt Kernel Time (ms): 0.117152
-----------------------------
-Version: 0.1
-Grayscale Kernel Time (ms): 4.679264
-Prewitt Kernel Time (ms): 0.111456
-----------------------------
-Version: 0.1
-Grayscale Kernel Time (ms): 2.860768
-Prewitt Kernel Time (ms): 0.128224
-----------------------------
-Version: 0.1
-Grayscale Kernel Time (ms): 3.028832
-Prewitt Kernel Time (ms): 0.116480
+Image: imgs/network.png
+	Grayscale Kernel Time (ms): 0.142816
+	Prewitt Kernel Time (ms): 0.115520
+Image: imgs/husky_cardinal.png
+	Grayscale Kernel Time (ms): 10.001568
+	Prewitt Kernel Time (ms): 0.188384
+Image: imgs/rooster.png
+	Grayscale Kernel Time (ms): 0.060896
+	Prewitt Kernel Time (ms): 0.097376
+Image: imgs/fruit_basket.png
+	Grayscale Kernel Time (ms): 1.627744
+	Prewitt Kernel Time (ms): 18.742624
+Image: imgs/objects2.png
+	Grayscale Kernel Time (ms): 0.081312
+	Prewitt Kernel Time (ms): 0.120832
+Image: imgs/computer_chip.png
+	Grayscale Kernel Time (ms): 0.061056
+	Prewitt Kernel Time (ms): 1.466624
+Image: imgs/objects.png
+	Grayscale Kernel Time (ms): 0.106048
+	Prewitt Kernel Time (ms): 0.121920
 ----------------------------

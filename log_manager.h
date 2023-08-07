@@ -10,14 +10,20 @@ typedef struct
 } LogFile;
 
 
-// Structure to hold log data
-typedef struct {
+typedef struct LogData {
+
+    char img_name[256];
     float kernel_time_grayscale;
     float kernel_time_prewitt;
+    struct LogData* next; // Pointer to the next log data
+
 } LogData;
 
+// Additional function to write all log data at once
+void write_log(LogFile logFile, LogData* head);
 
 LogFile open_log_file();
-void write_log(LogFile logFile, LogData *data);
+void free_log(LogData* head);
+
 
 #endif // LOG_MANAGER_H

@@ -1,20 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <omp.h>
+#include "log_manager.h"
 
 #define VERSION 0.1
 
-// Structure to hold the file
-typedef struct 
-{
-    FILE* file;
-} LogFile;
-
-// Structure to hold log data
-typedef struct {
-    float kernel_time_grayscale;
-    float kernel_time_prewitt;
-} LogData;
 
 LogFile open_log_file() {
     LogFile logFile;
@@ -26,20 +16,35 @@ LogFile open_log_file() {
     return logFile;
 }
 
-// Function to write log data
-void write_log(LogFile logFile, LogData *data) {
+// Function to write all log data at once
+void write_log(LogFile logFile, LogData* head) {
     if (logFile.file == NULL) {
         fprintf(stderr, "Log file is not open.\n");
         return;
     }
-    
-    #pragma omp critical
-    {
-        fprintf(logFile.file, "Version: %.1f\n", VERSION);
-        fprintf(logFile.file, "Grayscale Kernel Time (ms): %f\n", data->kernel_time_grayscale);
-        fprintf(logFile.file, "Prewitt Kernel Time (ms): %f\n", data->kernel_time_prewitt);
-        fprintf(logFile.file, "----------------------------\n");
 
+    fprintf(logFile.file, "Version: %.1f\n", VERSION);
+
+    LogData* current = head;
+    while (current != NULL) {
+
+        fprintf(logFile.file, "Image: %s\n", current->img_name);
+        fprintf(logFile.file, "\tGrayscale Kernel Time (ms): %f\n", current->kernel_time_grayscale);
+        fprintf(logFile.file, "\tPrewitt Kernel Time (ms): %f\n", current->kernel_time_prewitt);
+        
+        current = current->next; // Move to the next log data
     }
+
+    fprintf(logFile.file, "----------------------------\n");
 }
 
+
+void free_log(LogData* head){
+    // Free the linked list
+    LogData* current = head;
+    while (current != NULL) {
+        LogData* temp = current;
+        current = current->next;
+        free(temp);
+    }
+}
