@@ -3,7 +3,7 @@
 #include <cuda_runtime.h>
 #include <stdio.h>
 
-__global__ void convert_to_grayscale(unsigned char* input_image, unsigned char* grayscale_image, int width, int height) {
+__global__ void kernel_grayscale(unsigned char* input_image, unsigned char* grayscale_image, int width, int height) {
     int x = blockIdx.x * blockDim.x + threadIdx.x;
     int y = blockIdx.y * blockDim.y + threadIdx.y;
 
@@ -45,7 +45,7 @@ extern "C" float convertToGrayscale(unsigned char* host_input_image, unsigned ch
     }
 
     auto kernelFunction = [&]() {
-        convert_to_grayscale<<<gridDims, blockDims>>>(device_input_image, device_grayscale_image, width, height);
+        kernel_grayscale<<<gridDims, blockDims>>>(device_input_image, device_grayscale_image, width, height);
     };
 
     // Call and time the kernel execution using the timing function

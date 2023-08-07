@@ -5,7 +5,7 @@
 
 
 
-__global__ void apply_prewitt(unsigned char* grayscale_image, unsigned char* output_image, unsigned int width, unsigned int height) {
+__global__ void kernel_prewitt(unsigned char* grayscale_image, unsigned char* output_image, unsigned int width, unsigned int height) {
     // Prewitt operator https://en.wikipedia.org/wiki/Prewitt_operator
 
     int x = blockIdx.x * blockDim.x + threadIdx.x;
@@ -69,7 +69,7 @@ extern "C" float applyPrewitt(unsigned char* host_grayscale_image, unsigned char
 
 
     auto kernelFunction = [&](){
-        apply_prewitt<<<gridSize, blockSize>>>(device_grayscale_image, device_output_image, width, height);
+        kernel_prewitt<<<gridSize, blockSize>>>(device_grayscale_image, device_output_image, width, height);
     };
 
     // Call and time the kernel execution using the timing function
