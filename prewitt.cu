@@ -40,11 +40,11 @@ __global__ void kernel_prewitt(unsigned char* grayscale_image, unsigned char* ou
 
 
 
-extern "C" float applyPrewitt(unsigned char* host_grayscale_image, unsigned char* host_output_image, unsigned int width, unsigned int height) {
+extern "C" float applyPrewitt(unsigned char* host_grayscale_image, unsigned char* host_output_image, unsigned int width, unsigned int height, unsigned int bSize) {
     const int imageSize = width * height * sizeof(unsigned char);
-    const dim3 blockSize(16, 16); // Change this as per your needs
+    const dim3 blockSize(bSize, bSize); // Change this as per your needs
     const dim3 gridSize((width + blockSize.x - 1) / blockSize.x, (height + blockSize.y - 1) / blockSize.y);
-
+    
 
     unsigned char* device_grayscale_image;
     unsigned char* device_output_image;

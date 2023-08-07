@@ -6,40 +6,59 @@
 #define VERSION 0.1
 
 
-LogFile open_log_file() {
-    LogFile logFile;
-    logFile.file = fopen("timing_log.txt", "a");
-    if (logFile.file == NULL) {
-        fprintf(stderr, "Error opening log file.\n");
-        logFile.file = NULL;
+FILE* open_file(char* filename) {
+    FILE* file;
+    file = fopen(filename, "a");
+    if (file == NULL) {
+        fprintf(stderr, "Error opening file.\n");
+        file = NULL;
     }
-    return logFile;
+    return file;
 }
 
+
+
 // Function to write all log data at once
-void write_log(LogFile logFile, LogData* head) {
-    if (logFile.file == NULL) {
+void write_log(FILE* file, LogData* head) {
+    if (file == NULL) {
         fprintf(stderr, "Log file is not open.\n");
         return;
     }
 
-    fprintf(logFile.file, "Version: %.1f\n", VERSION);
+    fprintf(file, "Version: %.1f\n", VERSION);
 
     LogData* current = head;
     while (current != NULL) {
 
-        fprintf(logFile.file, "Image: %s\n", current->img_name);
-        fprintf(logFile.file, "\tGrayscale Kernel Time (ms): %f\n", current->kernel_time_grayscale);
-        fprintf(logFile.file, "\tPrewitt Kernel Time (ms): %f\n", current->kernel_time_prewitt);
+        fprintf(file, "Image: %s\n", current->img_name);
+        fprintf(file, "\tBlock Size: %d\n", current->block_size);
+        fprintf(file, "\tGrayscale Kernel Time (ms): %f\n", current->kernel_time_grayscale);
+        fprintf(file, "\tPrewitt Kernel Time (ms): %f\n", current->kernel_time_prewitt);
         
         current = current->next; // Move to the next log data
     }
 
-    fprintf(logFile.file, "----------------------------\n");
+    fprintf(file, "----------------------------\n");
+}
+
+void write_log_to_csv(FILE* file, LogData* head) {
+    if (file == NULL) {
+        fprintf(stderr, "Log file is not open.\n");
+        return;
+    }
+
+    // Print the CSV header
+    fprintf(file, "Image,Grayscale Kernel Time (ms),Prewitt Kernel Time (ms),Block Size\n");
+
+    LogData* current = head;
+    while (current != NULL) {
+        fprintf(file, "%s,%.3f,%.3f,%d\n", current->img_name, current->kernel_time_grayscale, current->kernel_time_prewitt, current->block_size);
+        current = current->next; // Move to the next log data
+    }
 }
 
 
-void free_log(LogData* head){
+void free_log_data(LogData* head){
     // Free the linked list
     LogData* current = head;
     while (current != NULL) {

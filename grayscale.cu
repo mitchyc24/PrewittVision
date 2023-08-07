@@ -18,10 +18,9 @@ __global__ void kernel_grayscale(unsigned char* input_image, unsigned char* gray
     }
 }
 
-extern "C" float convertToGrayscale(unsigned char* host_input_image, unsigned char* host_grayscale_image, unsigned int width, unsigned int height) {
+extern "C" float convertToGrayscale(unsigned char* host_input_image, unsigned char* host_grayscale_image, unsigned int width, unsigned int height, unsigned int bSize) {
     const int imageSize = width * height * sizeof(unsigned char);
-    const int blockSize = 16;
-    dim3 blockDims(blockSize, blockSize, 1);
+    dim3 blockDims(bSize, bSize, 1);
     dim3 gridDims((width + blockDims.x - 1) / blockDims.x, (height + blockDims.y - 1) / blockDims.y, 1);
 
     unsigned char* device_input_image;

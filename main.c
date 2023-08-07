@@ -34,7 +34,8 @@ int main(int argc, char* argv[]) {
     }
     closedir(dir);
 
-    LogFile logFile = open_log_file(); // Open the log file
+    FILE* logFile = open_file("timing_log.txt"); // Open txt log file
+    FILE* csvFile = open_file("timing_log.csv"); // OPEN csv log file
 
     LogData* head = NULL;
     LogData* tail = NULL;
@@ -62,17 +63,30 @@ int main(int argc, char* argv[]) {
         strncpy(log_data->img_name, filename, sizeof(log_data->img_name) - 1);
         log_data->img_name[sizeof(log_data->img_name) - 1] = '\0'; // Null-terminate the string
 
-        log_data->kernel_time_grayscale = convertToGrayscale(host_input_image, host_grayscale_image, width, height);
-        log_data->kernel_time_prewitt = applyPrewitt(host_grayscale_image, host_output_image, width, height);
-        log_data->next = NULL;
 
-        if (head == NULL) {
-            head = log_data;
-            tail = log_data;
-        } else {
-            tail->next = log_data;
-            tail = log_data;
+        int block_sizes[4] = { 4, 8, 16, 32 };
+        LogData* current = NULL;
+
+        int i;
+        for (i = 0; i < 4; i++) {
+            int b_size = block_sizes[i];
+            LogData* log_data = (LogData*)malloc(sizeof(LogData));
+            strncpy(log_data->img_name, filename, sizeof(log_data->img_name) - 1);
+            log_data->img_name[sizeof(log_data->img_name) - 1] = '\0';
+            log_data->block_size = b_size;
+            log_data->kernel_time_grayscale = convertToGrayscale(host_input_image, host_grayscale_image, width, height, b_size);
+            log_data->kernel_time_prewitt = applyPrewitt(host_grayscale_image, host_output_image, width, height, b_size);
+            log_data->next = NULL;
+
+            if (head == NULL) {
+                head = log_data;
+                tail = log_data;
+            } else {
+                tail->next = log_data;
+                tail = log_data;
+            }
         }
+
 
         char base_name_copy[256];
         const char* base_name = extract_base_name(filename, base_name_copy, sizeof(base_name_copy));
@@ -86,10 +100,13 @@ int main(int argc, char* argv[]) {
     }
 
     write_log(logFile, head); 
+    fclose(logFile); // Close the log file
 
-    free_log(head);
+    write_log_to_csv(csvFile, head);
+    fclose(csvFile);
 
-    fclose(logFile.file); // Close the log file
+    free_log_data(head);
+
 
     return 0;
 }
