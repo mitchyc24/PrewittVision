@@ -22,7 +22,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    // Collect the filenames
+    // Collect the filenames from path directory
     while ((entry = readdir(dir)) != NULL) {
         char filename[512];
         snprintf(filename, sizeof(filename), "%s/%s", path, entry->d_name);
@@ -34,28 +34,32 @@ int main(int argc, char* argv[]) {
     }
     closedir(dir);
 
+    // Open log files to write
     FILE* logFile = open_file("timing_log.txt"); // Open txt log file
     FILE* csvFile = open_file("timing_log.csv"); // OPEN csv log file
 
+    // Store input/output data in linked list
     LogData* head = NULL;
     LogData* tail = NULL;
 
-    #pragma omp parallel for
+    // Loop through each image within the path directory
     for (int i = 0; i < num_images; i++) {
-        int thread_id = omp_get_thread_num();
-        printf("Processing image %d by thread %d\n", i, thread_id);
+        //int thread_id = omp_get_thread_num();
+        //printf("Processing image %d by thread %d\n", i, thread_id);
 
         char *filename = filenames[i];
 
         unsigned char* host_input_image;
         unsigned int width, height;
         
+        // Decode the PNG into an array of char
         if (lodepng_decode32_file(&host_input_image, &width, &height, filename)) {
             fprintf(stderr, "Error reading image file %s\n", filename);
             free(host_input_image);
             continue; // Skip to the next file
         }
 
+        // Create and allocate memory for new images
         unsigned char* host_output_image = (unsigned char*)malloc(width * height * sizeof(unsigned char));
         unsigned char* host_grayscale_image = (unsigned char*)malloc(width * height * sizeof(unsigned char));
 
@@ -65,17 +69,21 @@ int main(int argc, char* argv[]) {
 
 
         int block_sizes[4] = { 4, 8, 16, 32 };
+        int num_of_threads[4] = { 1, 2, 6, 16 };
         LogData* current = NULL;
 
-        int i;
-        for (i = 0; i < 4; i++) {
+        // Loop through each block size for CUDA processing
+        for (int i = 0; i < 4; i++) {
             int b_size = block_sizes[i];
             LogData* log_data = (LogData*)malloc(sizeof(LogData));
+            strcpy(log_data->type, "CUDA");
             strncpy(log_data->img_name, filename, sizeof(log_data->img_name) - 1);
             log_data->img_name[sizeof(log_data->img_name) - 1] = '\0';
             log_data->block_size = b_size;
-            log_data->kernel_time_grayscale = convertToGrayscale(host_input_image, host_grayscale_image, width, height, b_size);
-            log_data->kernel_time_prewitt = applyPrewitt(host_grayscale_image, host_output_image, width, height, b_size);
+            log_data->width = width;
+            log_data->height = height;
+            log_data->kernel_time_grayscale = convertToGrayscaleCuda(host_input_image, host_grayscale_image, width, height, b_size);
+            log_data->kernel_time_prewitt = applyPrewittCuda(host_grayscale_image, host_output_image, width, height, b_size);
             log_data->next = NULL;
 
             if (head == NULL) {
@@ -87,7 +95,30 @@ int main(int argc, char* argv[]) {
             }
         }
 
+        // Loop through each number of threads by CPU/OpenMP
+        for (int i = 0; i < 4; i++) {
+            int threads = num_of_threads[i];
+            LogData* log_data = (LogData*)malloc(sizeof(LogData));
+            strcpy(log_data->type, "OpenMP");
+            strncpy(log_data->img_name, filename, sizeof(log_data->img_name) - 1);
+            log_data->img_name[sizeof(log_data->img_name) - 1] = '\0';
+            log_data->block_size = threads;
+            log_data->width = width;
+            log_data->height = height;
+            log_data->kernel_time_grayscale = convertToGrayscaleThreading(host_input_image, host_grayscale_image, width, height, threads);
+            log_data->kernel_time_prewitt = applyPrewittThreading(host_grayscale_image, host_output_image, width, height, threads);
+            log_data->next = NULL;
 
+            if (head == NULL) {
+                head = log_data;
+                tail = log_data;
+            } else {
+                tail->next = log_data;
+                tail = log_data;
+            }
+        }
+
+        // Save converted images (greyscale and edge detected with Prewitt operator)
         char base_name_copy[256];
         const char* base_name = extract_base_name(filename, base_name_copy, sizeof(base_name_copy));
 

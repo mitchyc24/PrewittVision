@@ -6,8 +6,12 @@
 
 
 typedef struct LogData {
+    char type[256];
     char img_name[256];
     int block_size; 
+    int num_threads;
+    int width;
+    int height;
     float kernel_time_grayscale;
     float kernel_time_prewitt;
     struct LogData* next; // Pointer to the next log data

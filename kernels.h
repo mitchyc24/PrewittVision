@@ -2,8 +2,11 @@
 extern "C" {
 #endif
 
-float convertToGrayscale(unsigned char* host_input_image, unsigned char* host_grayscale_image, unsigned int width, unsigned int height, unsigned int bSize);
-float applyPrewitt(unsigned char* host_grayscale_image, unsigned char* host_output_image, unsigned int width, unsigned int height, unsigned int bSize);
+float convertToGrayscaleCuda(unsigned char* host_input_image, unsigned char* host_grayscale_image, unsigned int width, unsigned int height, unsigned int bSize);
+float convertToGrayscaleThreading(unsigned char* host_input_image, unsigned char* host_grayscale_image, unsigned int width, unsigned int height, unsigned int threads);
+float applyPrewittCuda(unsigned char* host_grayscale_image, unsigned char* host_output_image, unsigned int width, unsigned int height, unsigned int bSize);
+float applyPrewittThreading(unsigned char* host_grayscale_image, unsigned char* host_output_image, unsigned int width, unsigned int height, unsigned int threads);
+
 
 #ifdef __cplusplus
 }
