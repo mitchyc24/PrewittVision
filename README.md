@@ -1,13 +1,13 @@
 # PrewittVision
 
-PrewittVision is an efficient image processing application that leverages parallel programming techniques using CUDA to perform accelerated edge detection on .png images. By implementing the Prewitt Operator on blocks of pixels in parallel, PrewittVision delivers high-performance gradient image generation, highlighting detected edges.
+PrewittVision is an efficient image processing application that leverages parallel programming techniques using CUDA to perform accelerated edge detection on .png images. By implementing the Prewitt Operator on blocks of pixels in parallel, PrewittVision delivers high-performance gradient image generation, highlighting detected edges. 
 
 ## Components
 
 - `main.c`: Contains the primary program execution flow, reading an input image, and writing the processed output image. It also includes parallel processing of images using OpenMP.
-- `grayscale.cu`: Contains the CUDA kernel and associated host code for converting the input image to grayscale.
-- `prewitt.cu`: Contains the CUDA kernel and associated host code for applying the Prewitt operator for edge detection.
-- `kernels.h`: Contains declarations for CUDA functions.
+- `grayscale.cu`: Contains the OpenMP threading, , CUDA kernel and associated host code for converting the input image to grayscale.
+- `prewitt.cu`: Contains the OpenMP threading, CUDA kernel and associated host code for applying the Prewitt operator for edge detection.
+- `kernels.h`: Contains declarations for CUDA and OpenMP threading functions.
 - `lodepng.c` and `lodepng.h`: Libraries for handling PNG image input and output.
 - `Makefile`: Used to compile and link the C and CUDA source files into the final executable.
 - `timing.cu` and `timing.h`: Contains functions for timing the kernel execution.

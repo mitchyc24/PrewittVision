@@ -1,5 +1,5 @@
 Image,Type,Grayscale Processing Time (ms),Prewitt Processing Time (ms),Threads (OpenMP)/Block Size (CUDA)
-imgs/objects2.png,CUDA,0.927,0.081,4
+imgs/objects2.png,CUDA,0.197,0.081,4
 imgs/objects2.png,CUDA,0.034,0.054,8
 imgs/objects2.png,CUDA,0.042,0.052,16
 imgs/objects2.png,CUDA,0.044,0.175,32
@@ -19,7 +19,7 @@ imgs/rooster.png,CUDA,0.150,0.077,4
 imgs/rooster.png,CUDA,0.052,0.051,8
 imgs/rooster.png,CUDA,0.028,0.157,16
 imgs/rooster.png,CUDA,0.032,0.055,32
-imgs/rooster.png,OpenMP,3.949,54.785,1
+imgs/rooster.png,OpenMP,3.949,29.785,1
 imgs/rooster.png,OpenMP,3.087,14.931,2
 imgs/rooster.png,OpenMP,1.006,5.117,6
 imgs/rooster.png,OpenMP,0.842,3.417,16
