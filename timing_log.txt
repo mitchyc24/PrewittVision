@@ -20,6 +20,16 @@ Image: imgs/objects2.png
 	Grayscale Processing Time (ms): 0.044096
 	Prewitt Processing Time (ms): 0.174976
 Image: imgs/objects2.png
+	Type: CUDA
+	Threads/Block Size: 64
+	Grayscale Processing Time (ms): 0.001440
+	Prewitt Processing Time (ms): 0.001472
+Image: imgs/objects2.png
+	Type: CUDA
+	Threads/Block Size: 128
+	Grayscale Processing Time (ms): 0.001440
+	Prewitt Processing Time (ms): 0.001440
+Image: imgs/objects2.png
 	Type: OpenMP
 	Threads/Block Size: 1
 	Grayscale Processing Time (ms): 3.623000
@@ -59,6 +69,16 @@ Image: imgs/husky_cardinal.png
 	Threads/Block Size: 32
 	Grayscale Processing Time (ms): 0.136128
 	Prewitt Processing Time (ms): 0.051136
+Image: imgs/husky_cardinal.png
+	Type: CUDA
+	Threads/Block Size: 64
+	Grayscale Processing Time (ms): 0.001440
+	Prewitt Processing Time (ms): 0.001600
+Image: imgs/husky_cardinal.png
+	Type: CUDA
+	Threads/Block Size: 128
+	Grayscale Processing Time (ms): 0.001408
+	Prewitt Processing Time (ms): 0.001504
 Image: imgs/husky_cardinal.png
 	Type: OpenMP
 	Threads/Block Size: 1
@@ -100,6 +120,16 @@ Image: imgs/rooster.png
 	Grayscale Processing Time (ms): 0.031968
 	Prewitt Processing Time (ms): 0.055040
 Image: imgs/rooster.png
+	Type: CUDA
+	Threads/Block Size: 64
+	Grayscale Processing Time (ms): 0.001472
+	Prewitt Processing Time (ms): 0.001440
+Image: imgs/rooster.png
+	Type: CUDA
+	Threads/Block Size: 128
+	Grayscale Processing Time (ms): 0.001408
+	Prewitt Processing Time (ms): 0.001408
+Image: imgs/rooster.png
 	Type: OpenMP
 	Threads/Block Size: 1
 	Grayscale Processing Time (ms): 3.949000
@@ -139,6 +169,16 @@ Image: imgs/fruit_basket.png
 	Threads/Block Size: 32
 	Grayscale Processing Time (ms): 0.262368
 	Prewitt Processing Time (ms): 0.106464
+Image: imgs/fruit_basket.png
+	Type: CUDA
+	Threads/Block Size: 64
+	Grayscale Processing Time (ms): 0.001472
+	Prewitt Processing Time (ms): 0.001440
+Image: imgs/fruit_basket.png
+	Type: CUDA
+	Threads/Block Size: 128
+	Grayscale Processing Time (ms): 0.001440
+	Prewitt Processing Time (ms): 0.001440
 Image: imgs/fruit_basket.png
 	Type: OpenMP
 	Threads/Block Size: 1
@@ -180,6 +220,16 @@ Image: imgs/computer_chip.png
 	Grayscale Processing Time (ms): 0.025056
 	Prewitt Processing Time (ms): 0.158656
 Image: imgs/computer_chip.png
+	Type: CUDA
+	Threads/Block Size: 64
+	Grayscale Processing Time (ms): 0.001408
+	Prewitt Processing Time (ms): 0.001408
+Image: imgs/computer_chip.png
+	Type: CUDA
+	Threads/Block Size: 128
+	Grayscale Processing Time (ms): 0.001408
+	Prewitt Processing Time (ms): 0.001440
+Image: imgs/computer_chip.png
 	Type: OpenMP
 	Threads/Block Size: 1
 	Grayscale Processing Time (ms): 3.254000
@@ -220,6 +270,16 @@ Image: imgs/network.png
 	Grayscale Processing Time (ms): 0.050080
 	Prewitt Processing Time (ms): 0.048384
 Image: imgs/network.png
+	Type: CUDA
+	Threads/Block Size: 64
+	Grayscale Processing Time (ms): 0.001440
+	Prewitt Processing Time (ms): 0.001472
+Image: imgs/network.png
+	Type: CUDA
+	Threads/Block Size: 128
+	Grayscale Processing Time (ms): 0.001376
+	Prewitt Processing Time (ms): 0.001408
+Image: imgs/network.png
 	Type: OpenMP
 	Threads/Block Size: 1
 	Grayscale Processing Time (ms): 5.215000
@@ -259,6 +319,16 @@ Image: imgs/objects.png
 	Threads/Block Size: 32
 	Grayscale Processing Time (ms): 0.045472
 	Prewitt Processing Time (ms): 0.115232
+Image: imgs/objects.png
+	Type: CUDA
+	Threads/Block Size: 64
+	Grayscale Processing Time (ms): 0.001568
+	Prewitt Processing Time (ms): 0.001440
+Image: imgs/objects.png
+	Type: CUDA
+	Threads/Block Size: 128
+	Grayscale Processing Time (ms): 0.001408
+	Prewitt Processing Time (ms): 0.001504
 Image: imgs/objects.png
 	Type: OpenMP
 	Threads/Block Size: 1

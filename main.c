@@ -43,6 +43,7 @@ int main(int argc, char* argv[]) {
     LogData* tail = NULL;
 
     // Loop through each image within the path directory
+    // #pragma omp parallel for // uncomment this and comment out line 100-120 to run images in parallel
     for (int i = 0; i < num_images; i++) {
         //int thread_id = omp_get_thread_num();
         //printf("Processing image %d by thread %d\n", i, thread_id);
@@ -68,12 +69,12 @@ int main(int argc, char* argv[]) {
         log_data->img_name[sizeof(log_data->img_name) - 1] = '\0'; // Null-terminate the string
 
 
-        int block_sizes[4] = { 4, 8, 16, 32 };
+        int block_sizes[6] = { 4, 8, 16, 32, 64, 128 };
         int num_of_threads[4] = { 1, 2, 6, 16 };
         LogData* current = NULL;
 
         // Loop through each block size for CUDA processing
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 6; i++) {
             int b_size = block_sizes[i];
             LogData* log_data = (LogData*)malloc(sizeof(LogData));
             strcpy(log_data->type, "CUDA");
