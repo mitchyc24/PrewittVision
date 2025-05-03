@@ -1,3 +1,4 @@
+# Build artifacts
 *.i
 *.ii
 *.gpu
@@ -6,4 +7,7 @@
 *.fatbin
 *.o
 
-PrewittVision
+# Directories
+build/
+output/
+logs/

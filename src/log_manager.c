@@ -31,11 +31,9 @@ void write_log(FILE* file, LogData* head) {
     while (current != NULL) {
 
         fprintf(file, "Image: %s\n", current->img_name);
-        fprintf(file, "\tResolution: %d*%d\n", current->width, current->height);
-        fprintf(file, "\tType: %s\n", current->type);
-        fprintf(file, "\tThreads/Block Size: %d\n", current->block_size);
-        fprintf(file, "\tGrayscale Processing Time (ms): %f\n", current->kernel_time_grayscale);
-        fprintf(file, "\tPrewitt Processing Time (ms): %f\n", current->kernel_time_prewitt);
+        fprintf(file, "\tBlock Size: %d\n", current->block_size);
+        fprintf(file, "\tGrayscale Kernel Time (ms): %f\n", current->kernel_time_grayscale);
+        fprintf(file, "\tPrewitt Kernel Time (ms): %f\n", current->kernel_time_prewitt);
         
         current = current->next; // Move to the next log data
     }
@@ -50,11 +48,11 @@ void write_log_to_csv(FILE* file, LogData* head) {
     }
 
     // Print the CSV header
-    fprintf(file, "Image,Type,Grayscale Processing Time (ms),Prewitt Processing Time (ms),Threads (OpenMP)/Block Size (CUDA)\n");
+    fprintf(file, "Image,Grayscale Kernel Time (ms),Prewitt Kernel Time (ms),Block Size\n");
 
     LogData* current = head;
     while (current != NULL) {
-        fprintf(file, "%s,%s,%.3f,%.3f,%d\n", current->img_name, current->type, current->kernel_time_grayscale, current->kernel_time_prewitt, current->block_size);
+        fprintf(file, "%s,%.3f,%.3f,%d\n", current->img_name, current->kernel_time_grayscale, current->kernel_time_prewitt, current->block_size);
         current = current->next; // Move to the next log data
     }
 }
