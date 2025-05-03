@@ -226,3 +226,231 @@ Image: data/objects2.png
 	Grayscale Kernel Time (ms): 0.072128
 	Prewitt Kernel Time (ms): 0.251264
 ----------------------------
+Version: 0.1
+Image: data/network.png
+	Block Size: 4
+	Grayscale Kernel Time (ms): 0.257632
+	Prewitt Kernel Time (ms): 0.352096
+Image: data/fruit_basket.png
+	Block Size: 4
+	Grayscale Kernel Time (ms): 0.265408
+	Prewitt Kernel Time (ms): 0.223168
+Image: data/husky_cardinal.png
+	Block Size: 4
+	Grayscale Kernel Time (ms): 3.673504
+	Prewitt Kernel Time (ms): 0.259424
+Image: data/network.png
+	Block Size: 8
+	Grayscale Kernel Time (ms): 11.275584
+	Prewitt Kernel Time (ms): 7.871840
+Image: data/fruit_basket.png
+	Block Size: 8
+	Grayscale Kernel Time (ms): 0.216096
+	Prewitt Kernel Time (ms): 0.425472
+Image: data/rooster.png
+	Block Size: 4
+	Grayscale Kernel Time (ms): 0.139424
+	Prewitt Kernel Time (ms): 4.467968
+Image: data/objects.png
+	Block Size: 4
+	Grayscale Kernel Time (ms): 0.134816
+	Prewitt Kernel Time (ms): 0.175680
+Image: data/computer_chip.png
+	Block Size: 4
+	Grayscale Kernel Time (ms): 0.265024
+	Prewitt Kernel Time (ms): 0.305696
+Image: data/objects2.png
+	Block Size: 4
+	Grayscale Kernel Time (ms): 7.045056
+	Prewitt Kernel Time (ms): 0.201664
+Image: data/husky_cardinal.png
+	Block Size: 8
+	Grayscale Kernel Time (ms): 0.102400
+	Prewitt Kernel Time (ms): 0.202912
+Image: data/objects.png
+	Block Size: 8
+	Grayscale Kernel Time (ms): 0.155200
+	Prewitt Kernel Time (ms): 0.147200
+Image: data/computer_chip.png
+	Block Size: 8
+	Grayscale Kernel Time (ms): 0.086496
+	Prewitt Kernel Time (ms): 0.234176
+Image: data/fruit_basket.png
+	Block Size: 16
+	Grayscale Kernel Time (ms): 0.157184
+	Prewitt Kernel Time (ms): 0.203456
+Image: data/rooster.png
+	Block Size: 8
+	Grayscale Kernel Time (ms): 0.081248
+	Prewitt Kernel Time (ms): 0.189344
+Image: data/network.png
+	Block Size: 16
+	Grayscale Kernel Time (ms): 12.067968
+	Prewitt Kernel Time (ms): 0.246880
+Image: data/computer_chip.png
+	Block Size: 16
+	Grayscale Kernel Time (ms): 0.051200
+	Prewitt Kernel Time (ms): 0.106272
+Image: data/network.png
+	Block Size: 32
+	Grayscale Kernel Time (ms): 0.084896
+	Prewitt Kernel Time (ms): 0.148928
+Image: data/husky_cardinal.png
+	Block Size: 16
+	Grayscale Kernel Time (ms): 0.285600
+	Prewitt Kernel Time (ms): 0.218592
+Image: data/objects.png
+	Block Size: 16
+	Grayscale Kernel Time (ms): 0.039968
+	Prewitt Kernel Time (ms): 0.072992
+Image: data/computer_chip.png
+	Block Size: 32
+	Grayscale Kernel Time (ms): 1.563680
+	Prewitt Kernel Time (ms): 0.150784
+Image: data/objects.png
+	Block Size: 32
+	Grayscale Kernel Time (ms): 0.046240
+	Prewitt Kernel Time (ms): 0.177344
+Image: data/fruit_basket.png
+	Block Size: 32
+	Grayscale Kernel Time (ms): 17.511423
+	Prewitt Kernel Time (ms): 0.232032
+Image: data/rooster.png
+	Block Size: 16
+	Grayscale Kernel Time (ms): 0.150240
+	Prewitt Kernel Time (ms): 11.932928
+Image: data/objects2.png
+	Block Size: 8
+	Grayscale Kernel Time (ms): 0.041152
+	Prewitt Kernel Time (ms): 0.079328
+Image: data/husky_cardinal.png
+	Block Size: 32
+	Grayscale Kernel Time (ms): 0.459936
+	Prewitt Kernel Time (ms): 0.400992
+Image: data/rooster.png
+	Block Size: 32
+	Grayscale Kernel Time (ms): 0.046112
+	Prewitt Kernel Time (ms): 0.209216
+Image: data/objects2.png
+	Block Size: 16
+	Grayscale Kernel Time (ms): 0.105600
+	Prewitt Kernel Time (ms): 0.105312
+Image: data/objects2.png
+	Block Size: 32
+	Grayscale Kernel Time (ms): 0.312256
+	Prewitt Kernel Time (ms): 0.182816
+----------------------------
+Version: 0.1
+Image: data/objects.png
+	Block Size: 4
+	Grayscale Kernel Time (ms): 0.255776
+	Prewitt Kernel Time (ms): 0.221280
+Image: data/rooster.png
+	Block Size: 4
+	Grayscale Kernel Time (ms): 0.340416
+	Prewitt Kernel Time (ms): 0.216576
+Image: data/objects2.png
+	Block Size: 4
+	Grayscale Kernel Time (ms): 2.615872
+	Prewitt Kernel Time (ms): 0.154528
+Image: data/computer_chip.png
+	Block Size: 4
+	Grayscale Kernel Time (ms): 0.315264
+	Prewitt Kernel Time (ms): 0.263008
+Image: data/husky_cardinal.png
+	Block Size: 4
+	Grayscale Kernel Time (ms): 0.134752
+	Prewitt Kernel Time (ms): 5.311968
+Image: data/network.png
+	Block Size: 4
+	Grayscale Kernel Time (ms): 0.151552
+	Prewitt Kernel Time (ms): 0.305504
+Image: data/fruit_basket.png
+	Block Size: 4
+	Grayscale Kernel Time (ms): 0.180032
+	Prewitt Kernel Time (ms): 9.253888
+Image: data/rooster.png
+	Block Size: 8
+	Grayscale Kernel Time (ms): 0.169088
+	Prewitt Kernel Time (ms): 18.634975
+Image: data/husky_cardinal.png
+	Block Size: 8
+	Grayscale Kernel Time (ms): 0.268096
+	Prewitt Kernel Time (ms): 0.183776
+Image: data/computer_chip.png
+	Block Size: 8
+	Grayscale Kernel Time (ms): 9.635552
+	Prewitt Kernel Time (ms): 0.254976
+Image: data/objects.png
+	Block Size: 8
+	Grayscale Kernel Time (ms): 0.529408
+	Prewitt Kernel Time (ms): 0.236160
+Image: data/network.png
+	Block Size: 8
+	Grayscale Kernel Time (ms): 0.204864
+	Prewitt Kernel Time (ms): 2.893472
+Image: data/objects2.png
+	Block Size: 8
+	Grayscale Kernel Time (ms): 0.110592
+	Prewitt Kernel Time (ms): 24.628672
+Image: data/rooster.png
+	Block Size: 16
+	Grayscale Kernel Time (ms): 5.527200
+	Prewitt Kernel Time (ms): 0.153184
+Image: data/fruit_basket.png
+	Block Size: 8
+	Grayscale Kernel Time (ms): 2.240128
+	Prewitt Kernel Time (ms): 4.188896
+Image: data/network.png
+	Block Size: 16
+	Grayscale Kernel Time (ms): 0.142176
+	Prewitt Kernel Time (ms): 2.086784
+Image: data/husky_cardinal.png
+	Block Size: 16
+	Grayscale Kernel Time (ms): 0.130912
+	Prewitt Kernel Time (ms): 9.444000
+Image: data/computer_chip.png
+	Block Size: 16
+	Grayscale Kernel Time (ms): 0.089984
+	Prewitt Kernel Time (ms): 0.166880
+Image: data/network.png
+	Block Size: 32
+	Grayscale Kernel Time (ms): 0.061504
+	Prewitt Kernel Time (ms): 0.232288
+Image: data/fruit_basket.png
+	Block Size: 16
+	Grayscale Kernel Time (ms): 8.027264
+	Prewitt Kernel Time (ms): 0.175936
+Image: data/objects2.png
+	Block Size: 16
+	Grayscale Kernel Time (ms): 0.044576
+	Prewitt Kernel Time (ms): 0.193312
+Image: data/objects.png
+	Block Size: 16
+	Grayscale Kernel Time (ms): 9.405888
+	Prewitt Kernel Time (ms): 6.272192
+Image: data/rooster.png
+	Block Size: 32
+	Grayscale Kernel Time (ms): 0.151104
+	Prewitt Kernel Time (ms): 0.454432
+Image: data/computer_chip.png
+	Block Size: 32
+	Grayscale Kernel Time (ms): 0.170400
+	Prewitt Kernel Time (ms): 1.951168
+Image: data/husky_cardinal.png
+	Block Size: 32
+	Grayscale Kernel Time (ms): 3.913504
+	Prewitt Kernel Time (ms): 5.063808
+Image: data/objects.png
+	Block Size: 32
+	Grayscale Kernel Time (ms): 1.942880
+	Prewitt Kernel Time (ms): 0.165024
+Image: data/objects2.png
+	Block Size: 32
+	Grayscale Kernel Time (ms): 2.223424
+	Prewitt Kernel Time (ms): 0.053248
+Image: data/fruit_basket.png
+	Block Size: 32
+	Grayscale Kernel Time (ms): 0.220128
+	Prewitt Kernel Time (ms): 0.814144
+----------------------------
